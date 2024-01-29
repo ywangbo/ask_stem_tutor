@@ -1,0 +1,22 @@
+<!-- templates/ask.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>Ask your STEM tutor</h1>
+    <form action="/get_response" method="post">
+        <label for="userQuestion">Your Question:</label>
+        <input type="text" id="userQuestion" name="user_question" placeholder="e.g. What's the complexity of a BFS search?" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if response_paragraph %}
+        <h2>Response:</h2>
+        <p>{{ response_paragraph }}</p>
+    {% endif %}
+</body>
+</html>
