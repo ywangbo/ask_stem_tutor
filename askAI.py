@@ -1,21 +1,18 @@
 from vertexai.language_models import CodeChatModel
 
+code_chat_model = CodeChatModel.from_pretrained("codechat-bison@001")
+chat = code_chat_model.start_chat()
 
-def write_a_function(question: str, temperature: float = 0.5) -> object:
-    """Example of using Codey for Code Chat Model to write a function."""
+def ask_a_question(question: str, temperature: float = 0.5) -> object:
 
-    # TODO developer - override these parameters as needed:
     parameters = {
         "temperature": temperature,  # Temperature controls the degree of randomness in token selection.
         "max_output_tokens": 1024,  # Token limit determines the maximum amount of text output.
     }
 
-    code_chat_model = CodeChatModel.from_pretrained("codechat-bison@001")
-    chat = code_chat_model.start_chat()
-
     response = chat.send_message(
         question, **parameters
     )
-    print(f"Response from Model: {response.text}")
+    #print(f"Response from Model: {response.text}")
 
     return response.text
